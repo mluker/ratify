@@ -19,17 +19,17 @@
         "plugins": [
             {
                 "name": "sbom",
-                "artifactTypes": "sbom/example",
-                "nestedReferences": "application/vnd.cncf.notary.signature"
+                "artifactTypes": ["sbom/example"],
+                "nestedReferences": ["application/vnd.cncf.notary.signature"]
             },
             {
                 "name": "cosign",
-                "artifactTypes": "org.sigstore.cosign.v1",
+                "artifactTypes": ["org.sigstore.cosign.v1"],
                 "key": "~/.ratify/ratify-certs/cosign/cosign.pub"
             },
             {
                 "name": "notaryv2",
-                "artifactTypes": "application/vnd.cncf.notary.signature",
+                "artifactTypes": ["application/vnd.cncf.notary.signature"],
                 "verificationCerts": [
                     "~/.ratify/ratify-certs/notary/wabbit-networks.io.crt"
                 ],

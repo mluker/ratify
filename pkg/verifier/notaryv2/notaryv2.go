@@ -21,7 +21,6 @@ import (
 	"encoding/json"
 	"fmt"
 	paths "path/filepath"
-	"strings"
 
 	ratifyconfig "github.com/deislabs/ratify/config"
 	"github.com/deislabs/ratify/pkg/common"
@@ -33,6 +32,7 @@ import (
 	"github.com/deislabs/ratify/pkg/verifier"
 	"github.com/deislabs/ratify/pkg/verifier/config"
 	"github.com/deislabs/ratify/pkg/verifier/factory"
+	"github.com/deislabs/ratify/pkg/verifier/types"
 
 	_ "github.com/notaryproject/notation-core-go/signature/cose"
 	_ "github.com/notaryproject/notation-core-go/signature/jws"
@@ -50,8 +50,8 @@ const (
 
 // NotaryV2VerifierConfig describes the configuration of notation verifier
 type NotaryV2VerifierConfig struct {
-	Name          string `json:"name"`
-	ArtifactTypes string `json:"artifactTypes"`
+	Name          string   `json:"name"`
+	ArtifactTypes []string `json:"artifactTypes"`
 
 	// VerificationCerts is array of directories containing certificates.
 	VerificationCerts []string `json:"verificationCerts"`
@@ -101,7 +101,13 @@ func (f *notaryv2VerifierFactory) Create(version string, verifierConfig config.V
 		return nil, err
 	}
 
-	artifactTypes := strings.Split(conf.ArtifactTypes, ",")
+	var artifactTypes []string
+	if at, ok := verifierConfig[types.ArtifactTypes]; ok {
+		for _, v := range at.([]interface{}) {
+			artifactTypes = append(artifactTypes, v.(string))
+		}
+	}
+
 	return &notaryV2Verifier{
 		artifactTypes:    artifactTypes,
 		notationVerifier: &verfiyService,

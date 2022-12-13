@@ -29,7 +29,7 @@ type VerifierSpec struct {
 	Name string `json:"name,omitempty"`
 
 	// The type of artifact this verifier handles
-	ArtifactTypes string `json:"artifactTypes,omitempty"`
+	ArtifactTypes []string `json:"artifactTypes,omitempty"`
 
 	// # Optional. URL/file path
 	Address string `json:"address,omitempty"`

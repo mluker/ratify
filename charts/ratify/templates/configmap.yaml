@@ -57,7 +57,7 @@ data:
           "plugins": [
             {
                 "name":"notaryv2",
-                "artifactTypes" : "application/vnd.cncf.notary.signature",
+                "artifactTypes" : ["application/vnd.cncf.notary.signature"],
                 "verificationCerts": [
                   "/usr/local/ratify-certs/notary/truststore"
                   ],
@@ -79,7 +79,7 @@ data:
             },
             {
                 "name": "cosign",
-                "artifactTypes": "org.sigstore.cosign.v1",
+                "artifactTypes": ["org.sigstore.cosign.v1"],
                 "key": "/usr/local/ratify-certs/cosign/cosign.pub"
             {{- end }}
             }

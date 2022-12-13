@@ -84,7 +84,7 @@ cat <<'EOF' >> spdxconfig.json
         "plugins": [
             {
                 "name": "licensechecker",
-                "artifactTypes": "application/vnd.ratify.spdx.v0",
+                "artifactTypes": ["application/vnd.ratify.spdx.v0"],
                 "allowedLicenses": [
                     "GPL-2.0-only",
                     "MIT",

@@ -35,7 +35,7 @@ The `authProvider` section of configuration file specifies the authentication pr
         "plugins": [
             {
                 "name":"notaryv2",
-                "artifactTypes" : "application/vnd.cncf.notary.signature",
+                "artifactTypes" : ["application/vnd.cncf.notary.signature"],
                 "verificationCerts": [
                     "<cert folder>"
                   ]

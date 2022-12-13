@@ -35,7 +35,7 @@ The only configuration that is needed for cosign verifier is the path to the pub
         "plugins": [
             {
                 "name":"cosign",
-                "artifactTypes" : "org.sigstore.cosign.v1",
+                "artifactTypes" : ["org.sigstore.cosign.v1"],
                 "key": "<path to cosign.pub>"
             }
         ]

@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/deislabs/ratify/pkg/common"
 	pluginCommon "github.com/deislabs/ratify/pkg/common/plugin"
@@ -52,13 +51,17 @@ func NewVerifier(version string, verifierConfig config.VerifierConfig, pluginPat
 	}
 
 	var nestedReferences []string
-	if vs, ok := verifierConfig[types.NestedReferences]; ok {
-		nestedReferences = strings.Split(fmt.Sprintf("%s", vs), ",")
+	if at, ok := verifierConfig[types.NestedReferences]; ok {
+		for _, v := range at.([]interface{}) {
+			nestedReferences = append(nestedReferences, v.(string))
+		}
 	}
 
 	var artifactTypes []string
 	if at, ok := verifierConfig[types.ArtifactTypes]; ok {
-		artifactTypes = strings.Split(fmt.Sprintf("%s", at), ",")
+		for _, v := range at.([]interface{}) {
+			artifactTypes = append(artifactTypes, v.(string))
+		}
 	}
 
 	if len(artifactTypes) == 0 {

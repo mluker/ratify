@@ -141,7 +141,7 @@ but we can look at what will be generated below:
         "plugins": [        
           {
             "name": "cosign",
-            "artifactTypes": "org.sigstore.cosign.v1",
+            "artifactTypes": ["org.sigstore.cosign.v1"],
             "key": "/usr/local/ratify-certs/cosign/cosign.pub"
           }
         ]        

@@ -664,7 +664,7 @@ Sample config update the fix.
         "plugins": [        
           {
             "name": "cosign",
-            "artifactTypes": "application/vnd.dev.cosign.simplesigning.v1+json",
+            "artifactTypes": ["application/vnd.dev.cosign.simplesigning.v1+json"],
             "key": "/usr/local/ratify-certs/cosign.pub"
           }
         ]        

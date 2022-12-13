@@ -35,7 +35,7 @@ func TestVerifierAdd_EmptyParameter(t *testing.T) {
 	resetVerifierMap()
 	var testVerifierSpec = configv1alpha1.VerifierSpec{
 		Name:          "notaryv2",
-		ArtifactTypes: "application/vnd.cncf.notary.signature",
+		ArtifactTypes: []string{"application/vnd.cncf.notary.signature"},
 	}
 	var resource = "notaryv2"
 
@@ -97,7 +97,7 @@ func getLicenseCheckerFromParam(parametersString string) configv1alpha1.Verifier
 
 	return configv1alpha1.VerifierSpec{
 		Name:          "licensechecker",
-		ArtifactTypes: "application/vnd.ratify.spdx.v0",
+		ArtifactTypes: []string{"application/vnd.ratify.spdx.v0"},
 		Parameters: runtime.RawExtension{
 			Raw: allowedLicenses,
 		},

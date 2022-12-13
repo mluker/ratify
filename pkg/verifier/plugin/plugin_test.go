@@ -44,8 +44,8 @@ func TestNewVerifier_Expected(t *testing.T) {
 	var verifierConfig config.VerifierConfig
 	verifierConfig = map[string]interface{}{
 		"name":             "test-verifier",
-		"artifactTypes":    "test1,test2",
-		"nestedReferences": "ref1,ref2",
+		"artifactTypes":    []any{"test1", "test2"},
+		"nestedReferences": []any{"ref1", "ref2"},
 	}
 
 	verifier, err := NewVerifier("1.0.0", verifierConfig, []string{})
